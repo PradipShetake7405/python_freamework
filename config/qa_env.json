@@ -1,0 +1,6 @@
+{
+    "--base-url":"https://opensource-demo.orangehrmlive.com/web/index.php/auth/login", 
+    "--dashboard-url":"https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index",
+    "username": "Admin",
+    "password": "admin123"
+}

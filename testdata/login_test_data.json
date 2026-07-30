@@ -1,0 +1,8 @@
+[
+    {
+        "test_name": "Very Long Password",
+        "email_username": "Admin",
+        "password": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "expected": "Invalid credentials"
+    }
+]

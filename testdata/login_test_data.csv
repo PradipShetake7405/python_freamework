@@ -1,0 +1,7 @@
+test_name,email_username,password,expected
+Valid Login,Admin,admin123,Success
+Invalid Password,Admin,wrong123,Invalid credentials
+Invalid Username,WrongAdmin,admin123,Invalid credentials
+Blank Username,,admin123,Username is required
+Blank Password,Admin,,Password is required
+Blank Credentials,,,Username and Password are required
