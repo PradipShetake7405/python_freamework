@@ -1,18 +1,18 @@
 import logging
 import os
 
-
 class LogGen:
 
     @staticmethod
     def loggen():
 
-        if not os.path.exists("logs"):
-            os.mkdir("logs")
+        log_dir = "reports/logs"
+        os.makedirs(log_dir, exist_ok=True)
 
         logging.basicConfig(
-            filename="reports/logs/automation.log",
-            format="%(asctime)s : %(levelname)s : %(message)s",
+            filename=os.path.join(log_dir, "automation.log"),
+            format="%(asctime)s : %(levelname)s : %(name)s : %(message)s",
+            datefmt="%m/%d/%Y %I:%M:%S %p",
             level=logging.INFO,
             force=True
         )
