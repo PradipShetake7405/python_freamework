@@ -3,7 +3,7 @@
 import time
 from utility.logger import LogGen
 from pages.base_page import BasePage
-import allure
+#import allure
 
 class LoginPage(BasePage):
 
