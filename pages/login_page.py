@@ -3,7 +3,7 @@
 import time
 from utility.logger import LogGen
 from pages.base_page import BasePage
-#import allure
+import allure
 
 class LoginPage(BasePage):
 
@@ -40,7 +40,7 @@ class LoginPage(BasePage):
         except Exception as e:
             self.logger.error(f"Exception while clicking Login button : {e}")
             raise
-
+    
     def login(self, username, password):
         with allure.step(f"Login with username '{username}'"):
 
