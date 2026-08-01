@@ -50,7 +50,7 @@ class LoginPage(BasePage):
             self.set_password(password)
             self.click_login()
 
-            time.sleep(3)
+            time.sleep(2)
 
             self.logger.info("Login action completed")
 
