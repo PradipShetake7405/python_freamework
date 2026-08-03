@@ -1,4 +1,5 @@
 # conftest.py
+from playwright.async_api import async_playwright
 import pytest
 import allure
 from pathlib import Path
@@ -54,7 +55,9 @@ def _launch_browser_context(request, storage_state=None):
 
     print(f"[INFO] Launching browser: {browser_name} (headed={headed})")
 
-    pw = sync_playwright().start()
+#    pw = sync_playwright().start()
+    pw = async_playwright().start()
+
     browser_attr = browser_name.lower()
     if not hasattr(pw, browser_attr):
         pw.stop()
