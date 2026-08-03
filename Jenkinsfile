@@ -1,4 +1,3 @@
-
 pipeline {
 
     agent any
@@ -26,20 +25,25 @@ pipeline {
         booleanParam(
             name: 'HEADLESS',
             defaultValue: true,
-            description: 'Run in Headless Mode'
+            description: 'Run browser in Headless Mode'
         )
 
-      }
-
-      stage('Print Parameters') {
-        steps {
-            echo "Environment : ${params.ENV}"
-            echo "Browser     : ${params.BROWSER}"
-            echo "Suite       : ${params.SUITE}"
-            echo "Headless    : ${params.HEADLESS}"
-        }
     }
+
     stages {
+
+        stage('Print Parameters') {
+            steps {
+                echo "===================================="
+                echo "Build Parameters"
+                echo "===================================="
+                echo "Environment : ${params.ENV}"
+                echo "Browser     : ${params.BROWSER}"
+                echo "Suite       : ${params.SUITE}"
+                echo "Headless    : ${params.HEADLESS}"
+                echo "===================================="
+            }
+        }
 
         stage('Checkout') {
             steps {
@@ -59,7 +63,7 @@ pipeline {
             }
         }
 
-        stage('Install Playwright') {
+        stage('Install Playwright Browsers') {
             steps {
                 bat 'playwright install'
             }
@@ -67,10 +71,12 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                bat '  --env=${params.ENV} ^
-            --browser=${params.BROWSER} ^
-            --headed=${params.HEADLESS} ^
-            -m ${params.SUITE}'
+                bat """
+                pytest ^
+                --env=${params.ENV} ^
+                --browser=${params.BROWSER} ^
+                -m ${params.SUITE}
+                """
             }
         }
 
@@ -79,15 +85,17 @@ pipeline {
     post {
 
         success {
-            echo 'Build Successful'
+            echo '✅ Build Successful'
         }
 
         failure {
-            echo 'Build Failed'
+            echo '❌ Build Failed'
         }
 
         always {
+            echo '===================================='
             echo 'Pipeline Completed'
+            echo '===================================='
         }
 
     }
