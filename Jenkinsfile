@@ -69,17 +69,16 @@ pipeline {
                 bat 'playwright install'
             }
         }
-
         stage('Run Tests') {
             steps {
-                bat """
-                pytest ^
-                --env=${params.ENV} ^
-                --browser=${params.BROWSER} ^
-                -m ${params.SUITE}
-                """
+                    bat """
+                    pytest ^
+                    --env=${params.ENV} ^
+                    --browser=${params.BROWSER} ^
+                    -m ${params.SUITE}
+                  """
+                 }
             }
-        }
 
     }
 
