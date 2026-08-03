@@ -2,6 +2,22 @@ pipeline {
 
 
     agent any
+      options {
+        buildDiscarder(logRotator(numToKeepStr: '5'))
+        disableConcurrentBuilds()
+    }
+
+    parameters {
+        string(name: 'TEST_PARAM', defaultValue: 'Hello', description: 'Test Parameter')
+    }
+
+    stages {
+        stage('Test') {
+            steps {
+                echo "TEST_PARAM = ${params.TEST_PARAM}"
+            }
+        }
+    }
 
     parameters {
 
