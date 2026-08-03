@@ -2,6 +2,12 @@ pipeline {
 
 
     agent any
+
+    stage('Verify Jenkinsfile') {
+    steps {
+        echo "******** NEW JENKINSFILE LOADED ********"
+    }
+}
       options {
         buildDiscarder(logRotator(numToKeepStr: '5'))
         disableConcurrentBuilds()
