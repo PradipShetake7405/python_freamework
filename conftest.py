@@ -91,6 +91,7 @@ def _teardown_browser_context(pw, browser, context):
     try:
         pw.stop()
     except Exception:
+
         pass
     print("[INFO] Playwright stopped and browser closed.")
 
@@ -101,8 +102,8 @@ def _teardown_browser_context(pw, browser, context):
 @pytest.fixture(scope="function")
 def browser_context(request):
     pw, browser, context = _launch_browser_context(request, storage_state=None)
-    yield context
-    _teardown_browser_context(pw, browser, context)
+    yield context ## context is created and pass to test function afetr
+    _teardown_browser_context(pw, browser, context) # teardown 
 
 
 # ------------------------------------------------------------------
