@@ -5,7 +5,7 @@ class LogGen:
 
     @staticmethod
     def loggen():
-
+        # make folder if not present
         log_dir = "reports/logs"
         os.makedirs(log_dir, exist_ok=True)
 
